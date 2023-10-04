@@ -12,9 +12,10 @@ else
     # Run checker.py on all supported files in the current directory
     $PYTHON checker.py
 fi
+# Run _git.py to stage and commit changes with a custom message
+read -p "Enter commit message for _git.py: " GIT_COMMIT_MESSAGE
+$PYTHON _git.py "$GIT_COMMIT_MESSAGE"
 
-# Run _git.py to stage and commit changes
-$PYTHON _git.py "Commit message for formatting and style changes"
-
-# Run main.py to format and check style, and commit changes
-$PYTHON main.py "$FILENAME" "Commit message for formatting and style changes"
+# Run main.py to format and check style, and commit changes with a custom message
+read -p "Enter commit message for main.py: " MAIN_COMMIT_MESSAGE
+$PYTHON main.py "$FILENAME" "$MAIN_COMMIT_MESSAGE"

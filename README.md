@@ -29,6 +29,24 @@ STEP 3:
 now let the fun begin: clone this repo in the same directory as the files you want to check
 
 run:
- git clone https://github.com/Kaywuyep/checker.git
- cd checker
+git clone https://github.com/Kaywuyep/checker.git
+cd checker
+chmod u+x runchecks
 
+STEP 4: almost done
+mkdir CODE_FORMATTER
+mv *.py __pycache__ README.md CODE_FORMATTER/
+
+STEP 5:
+now we are completly set up:
+
+simply use ./runchecks filename.py[or any extension available on this program] 'your commit message'
+
+STEP 6: 
+
+kindly 'git push' when you are done. And your files are now in you git repository
+
+I would appreciate any corrections and a fork on this repo.
+
+
+THANK YOU!!!!!!!
