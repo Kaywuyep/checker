@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Set the correct path to the python interpreter
+PYTHON="/usr/bin/python3"
+
+# Check if a filename is provided as an argument
+if [ "$#" -eq 1 ]; then
+    FILENAME="$1"
+    # Run checker.py on the specified file
+    $PYTHON checker.py "$FILENAME"
+else
+    # Run checker.py on all supported files in the current directory
+    $PYTHON checker.py
+fi
+
+# Run _git.py to stage and commit changes
+$PYTHON _git.py "Commit message for formatting and style changes"
+
+# Run main.py to format and check style, and commit changes
+$PYTHON main.py "$FILENAME" "Commit message for formatting and style changes"
