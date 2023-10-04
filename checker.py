@@ -12,7 +12,7 @@ def format_code(filenames):
         if filename.endswith(('.py', '.pyw')):
             subprocess.run(["yapf", "-i", filename])
         elif filename.endswith(('.c', '.cpp')):
-            subprocess.run(["betty", "--style", "linux", filename])
+            subprocess.run(["betty", filename])
         else:
             subprocess.run(["black", filename])
 
