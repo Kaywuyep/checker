@@ -3,19 +3,24 @@
 # Set the correct path to the python interpreter
 PYTHON="/usr/bin/python3"
 
-# Check if a filename is provided as an argument
-if [ "$#" -eq 1 ]; then
+# Check if a filename and commit message are provided as arguments
+if [ "$#" -eq 2 ]; then
     FILENAME="$1"
+    COMMIT_MESSAGE="$2"
     # Run checker.py on the specified file
     $PYTHON checker.py "$FILENAME"
 else
     # Run checker.py on all supported files in the current directory
     $PYTHON checker.py
 fi
-# Run _git.py to stage and commit changes with a custom message
-read -p "Enter commit message for _git.py: " GIT_COMMIT_MESSAGE
-$PYTHON _git.py "$GIT_COMMIT_MESSAGE"
 
-# Run main.py to format and check style, and commit changes with a custom message
-read -p "Enter commit message for main.py: " MAIN_COMMIT_MESSAGE
-$PYTHON main.py "$FILENAME" "$MAIN_COMMIT_MESSAGE"
+# Run _git.py to stage and commit changes with the provided commit message
+if [ -n "$COMMIT_MESSAGE" ]; then
+    $PYTHON _git.py "$COMMIT_MESSAGE"
+else
+    echo "Error: Commit message cannot be empty."
+fi
+
+# Run main.py to format and check style
+#and commit changes with the provided commit message
+$PYTHON main.py "$FILENAME" "$COMMIT_MESSAGE"
