@@ -26,9 +26,7 @@ def check_style(filenames):
         if filename.endswith(('.py', '.pyw')):
             subprocess.run(["pycodestyle", filename])
         elif filename.endswith(('.c', '.cpp')):
-            subprocess.run(
-                ["betty", "--dry-run", "--style", "linux", filename],
-                check=True)
+            subprocess.run(["betty", filename], check=True)
         else:
             subprocess.run(["flake8", filename], check=True)
 
