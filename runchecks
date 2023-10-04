@@ -12,6 +12,8 @@ if [ "$#" -eq 2 ]; then
 else
     # Run checker.py on all supported files in the current directory
     $PYTHON checker.py
+    COMMIT_MESSAGE="$1"
+    # Assuming the commit message is the only argument in this case
 fi
 
 # Run _git.py to stage and commit changes with the provided commit message
